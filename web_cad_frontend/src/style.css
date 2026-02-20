@@ -1,13 +1,17 @@
 :root {
-  --bg-color: #020617; /* Very dark slate */
+  --bg-color: #020617;
+  /* Very dark slate */
   --panel-bg: rgba(15, 23, 42, 0.65);
   --panel-border: rgba(255, 255, 255, 0.08);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  
-  --primary: #3b82f6; /* Blue 500 */
-  --primary-hover: #60a5fa; /* Blue 400 */
-  --accent: #8b5cf6; /* Violet 500 */
+
+  --primary: #3b82f6;
+  /* Blue 500 */
+  --primary-hover: #60a5fa;
+  /* Blue 400 */
+  --accent: #8b5cf6;
+  /* Violet 500 */
   --success: #10b981;
   --danger: #ef4444;
 
@@ -21,7 +25,8 @@
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -47,15 +52,23 @@ body, html {
   z-index: 1;
   outline: none;
   /* Placeholder animation until WASM loads */
-  background: linear-gradient(135deg, transparent 40%, rgba(59,130,246,0.05) 50%, transparent 60%);
+  background: linear-gradient(135deg, transparent 40%, rgba(59, 130, 246, 0.05) 50%, transparent 60%);
   background-size: 200% 200%;
   animation: shine 8s ease infinite;
 }
 
 @keyframes shine {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .ui-layer {
@@ -65,7 +78,8 @@ body, html {
   width: 100%;
   height: 100%;
   z-index: 10;
-  pointer-events: none; /* Let clicks pass through to canvas by default */
+  pointer-events: none;
+  /* Let clicks pass through to canvas by default */
   display: flex;
   flex-direction: column;
 }
@@ -107,8 +121,13 @@ body, html {
 }
 
 @keyframes pulse-glow {
-  from { box-shadow: 0 0 5px rgba(139, 92, 246, 0.4); }
-  to { box-shadow: 0 0 20px rgba(139, 92, 246, 0.8); }
+  from {
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.4);
+  }
+
+  to {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  }
 }
 
 .brand h1 {
@@ -269,4 +288,56 @@ button {
   margin-right: 12px;
   display: inline-block;
   min-width: 40px;
+}
+
+/* History Panel */
+.history-panel {
+  margin-top: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  padding: 8px;
+  max-height: 120px;
+  overflow-y: auto;
+  font-size: 0.75rem;
+}
+
+.history-panel h4 {
+  font-family: var(--font-heading);
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+#commit-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.commit-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commit-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.commit-item .hash {
+  color: var(--primary-hover);
+  font-family: monospace;
+}
+
+.commit-item .time {
+  color: var(--text-muted);
+  font-size: 0.65rem;
 }
